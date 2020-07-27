@@ -1,0 +1,73 @@
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h4>添加 IP 到阻断列表</h4>
+        </div>
+        <div class="card-body">
+            <form class="form-horizontal" method="post" action="{:url('admin/Ban/add')}" >
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" >IP地址</label>
+                    <div class="col-sm-10">
+                        <textarea  autocomplete="off" type="text" name="ip" required class="form-control"></textarea>
+                        <span class="text-small text-gray help-block-none">支持同时输入多个ip地址，使用回车换行</span>
+                    </div>
+
+                    <label class="col-sm-2 form-control-label" >备注</label>
+                    <div class="col-sm-10">
+                        <input autocomplete="off" type="text" name="remarks" required class="form-control">
+                        <span class="text-small text-gray help-block-none">简短标明原因</span>
+                    </div>
+
+                    <label class="col-sm-2 form-control-label">过期时长</label>
+                    <div class="col-sm-10 mb-3">
+                        <select name="expire" required class="form-control">
+                            <option value="15">15分钟</option>
+                            <option value="30">30分钟</option>
+                            <option value="60">1 小时</option>
+                            <option value="120">2 小时</option>
+                            <option value="300">5 小时</option>
+                            <option value="1440">1 天</option>
+                            <option value="4320">3 天</option>
+                            <option value="10080">1 周</option>
+                            <option value="43200">1 月</option>
+                            <option value="-1">无限期</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">执行</button>
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>控制面板</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>队列中剩余待核查项目</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>取消队列中全部任务</td>
+                            <td><a href="" class="btn btn-primary">执行</a></td>
+                        </tr>
+                        <tr>
+                            <td>全部数据重新核查</td>
+                            <td><a href="" class="btn btn-primary">执行</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+{/* 用户主页 */ }
+{include file="common/header-normal"/}
+<article id="main">
+    <header oncontextmenu="return false;" onselectstart="return false">
+        <h2>欢 迎 访 问 - {$Think.config.app_index_title}</h2>
+        <p>
+            雪是大浪漫，你是小人间。
+        </p>
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            <section>
+                <h4>当前使用账户信息</h4>
+                <p>在此您可以直观的看到您当前账户所拥有权益。本应用完全免费，请放心使用，使用量通常在不到五天内重置。相关问题请查看“使用指南”。</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>属性</th>
+                            <th>详细信息</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>账户ID</td>
+                            <td>{$openid}</td>
+                        </tr>
+                        <tr>
+                            <td>剩余可使用资源</td>
+                            <td><progress value="{$lave}" max="{$all}"></progress></td>
+                        </tr>
+                        <tr>
+                            <td>当前认证会话ID</td>
+                            <td>{$session}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <div class="6u 12u$(medium)">
+                <ul class="actions">
+                    <li><a href="{:url('index/index/index')}" class="button special">前往首页</a></li>
+                    <li><a href="{:url('index/user/logout')}" class="button">安全退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</article>
+{include file="common/footer"/}

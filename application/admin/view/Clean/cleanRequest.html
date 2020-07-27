@@ -1,0 +1,24 @@
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h4>历史审计内容删除</h4>
+        </div>
+        <div class="card-body">
+            <form class="form-horizontal" action="{:url('admin/Clean/cleanRequest')}" method="post" >
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label">删除N天以前的审计记录</label>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" name="day" required class="form-control">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary"  onclick="if(confirm('再次确认您要执行删除操作')==false)return false;">Clean!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

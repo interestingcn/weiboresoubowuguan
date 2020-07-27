@@ -1,0 +1,121 @@
+<br>
+<div class="page-header">
+    <h1>
+        &nbsp;&nbsp;用户账户信息 - ID：{$Request.param.id}
+    </h1>
+</div>
+
+<table class="table table-striped table-condensed">
+    <thead>
+    <tr>
+        <th>
+            项目名称
+        </th>
+        <th>
+            值
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            用户ID
+        </td>
+        <td>
+            <a href='{:url('admin/user/info',['id' => $info.id,'idType' => 'userid'])}' target="_blank"> {$info.id}</a>  -  <a href='{:url('admin/RequestAudit/IdTrace',['userid' => $info.id])}' target="_blank">追踪</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            OpenID
+        </td>
+        <td>
+            {$info.openid}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            剩余使用量
+        </td>
+        <td>
+            {$info.lave} - <a href='{:url('admin/user/initUsed',['userid' => $info.id])}'> 重置</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            初始可用量
+        </td>
+        <td>
+            {$info.all} - <a href='{:url('admin/user/setInitAll',['userid' => $info.id])}'> 设置初始使用量</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            当前认定Session
+        </td>
+        <td>
+            {$info.session} - <a href='{:url('admin/user/down',['userid' => $info.id])}'>远程注销登陆</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            账户状态
+        </td>
+        <td>
+            {$info.status} - <a href='{:url('admin/user/setUserStatus',['userid' => $info.id])}'> 更改</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            最后请求时间
+        </td>
+        <td>
+            {$info.last_use|date="Y-m-d H:i:s",###}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            此账户今日访问次数
+        </td>
+        <td>
+            {$today_num|default='OpenID索引不支持显示此项目'}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            此账户全部访问次数
+        </td>
+        <td>
+            {$all_num|default='OpenID索引不支持显示此项目'}
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            账户在此时间前限制登录
+        </td>
+        <td>
+            {$info.ban_expire|date="Y-m-d H:i:s",###}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            短期限制登录
+        </td>
+        <td>
+            <a href='{:url('admin/user/userBan',['userid' => $info.id,'time' => 1])}'> 1天</a>
+            &nbsp;--&nbsp;
+            <a href='{:url('admin/user/userBan',['userid' => $info.id,'time' => 2])}'> 2天</a>
+            &nbsp;--&nbsp;
+            <a href='{:url('admin/user/userBan',['userid' => $info.id,'time' => 5])}'> 5天</a>
+            &nbsp;--&nbsp;
+            <a href='{:url('admin/user/userBan',['userid' => $info.id,'time' => 10])}'> 10天</a>
+            &nbsp;--&nbsp;
+            <a href='{:url('admin/user/userBan',['userid' => $info.id,'time' => 30])}'> 30天</a>
+            &nbsp;--&nbsp;
+            <a href='{:url('admin/user/userBan',['userid' => $info.id,'time' => 0])}'> 解除限制</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

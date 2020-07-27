@@ -1,0 +1,25 @@
+{/* 登录页面 */ }
+{include file="common/header-normal"/}
+<article id="main">
+    <header oncontextmenu="return false;" onselectstart="return false">
+        <h2>用 户 登 陆 - {$Think.config.app_index_title}</h2>
+        <p>
+            雪是大浪漫，你是小人间。
+        </p>
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            <section>
+                <h4>登陆说明</h4>
+                <p>
+                    欢迎登陆微博热搜博物馆。因受大量爬虫疑似造成DDOS攻击，本应用现将用户绑定到第三方账户以识别用户。本应用仅可使用QQ系列账户登录，多有不便请见谅。
+                    详情请见“使用指南”。
+                </p>
+                <hr />
+                <ul class="actions vertical">
+                    <li><a href="?type=qq" class="button special fit">点击使用QQ登录</a></li>
+                </ul>
+        </div>
+    </section>
+</article>
+{include file="common/footer"/}

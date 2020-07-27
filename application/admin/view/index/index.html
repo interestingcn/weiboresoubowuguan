@@ -1,0 +1,181 @@
+<section class="dashboard-counts section-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Count item widget-->
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-user"></i></div>
+                    <div class="name"><strong class="text-uppercase">今日访问</strong><span>Data requests</span>
+                        <div class="count-number">{$request_num}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Count item widget-->
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-padnote"></i></div>
+                    <div class="name"><strong class="text-uppercase">新增时间数据</strong><span>Add time data</span>
+                        <div class="count-number">{$new_time_num}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Count item widget-->
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-website"></i></div>
+                    <div class="name"><strong class="text-uppercase">今日新增名词</strong><span>New noun today</span>
+                        <div class="count-number">{$new_title_num}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Count item widget-->
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-bill"></i></div>
+                    <div class="name"><strong class="text-uppercase">缓存队列剩余</strong><span>Cache queue</span>
+                        <div class="count-number">{$cache_num}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Count item widget-->
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-list"></i></div>
+                    <div class="name"><strong class="text-uppercase">待重新核验</strong><span>Reexamination</span>
+                        <div class="count-number">{$need_check_num}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Count item widget-->
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-close"></i></div>
+                    <div class="name"><strong class="text-uppercase">当前阻断IP</strong><span>Block IP</span>
+                        <div class="count-number">{$now_in_ban}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-list-1"></i></div>
+                    <div class="name"><strong class="text-uppercase">全部名词数量</strong><span>All nouns</span>
+                        <div class="count-number">{$all_title_num}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-interface-windows"></i></div>
+                    <div class="name"><strong class="text-uppercase">数据分拣</strong><span>Data sorting</span>
+                        <div class="count-number">{$service_updateTitle}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-paper-airplane"></i></div>
+                    <div class="name"><strong class="text-uppercase">核验服务</strong><span>Verification</span>
+                        <div class="count-number">{$service_checkMax}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-page"></i></div>
+                    <div class="name"><strong class="text-uppercase">IP防火墙</strong><span>Point of time</span>
+                        <div class="count-number">{$service_firewall}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4 col-6">
+                <div class="wrapper count-title d-flex">
+                    <div class="icon"><i class="icon-page"></i></div>
+                    <div class="name"><strong class="text-uppercase">最后数据更新批次</strong><span>Point of time</span>
+                        <div class="count-number">{$last_time}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="dashboard-header section-padding">
+    <!-- 最近请求列表 -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>最新请求记录</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>请求地址</th>
+                            <th>来源</th>
+                            <th>UA</th>
+                            <th>IP</th>
+                            <th>时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="lastRequest" id="data" empty=""}
+                        <tr>
+                            <th scope="row">{$i}</th>
+                            <td style="word-break:break-all; word-wrap:break-word; white-space:inherit">{$data.request}</td>
+                            <td style="word-break:break-all; word-wrap:break-word; white-space:inherit">{$data.refer}</td>
+                            <td style="word-break:break-all; word-wrap:break-word; white-space:inherit">{$data.ua}</td>
+                            <td>{$data.ip|long2ip}</td>
+                            <td>{$data.time|date="Y-m-d H:i:s",###}</td>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 最近屏蔽IP -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>最近IP阻断记录</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>IP</th>
+                            <th>阻断原因</th>
+                            <th>阻断时间</th>
+                            <th>解除时间</th>
+                            <th>添加方式</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="lastBanIp" id="data" empty=""}
+                        <tr>
+                            <th scope="row">{$i}</th>
+                            <td>{$data.ip|long2ip}</td>
+                            <td>{$data.location.country} - {$data.location.area}</td>
+                            <td>{$data.remarks}</td>
+                            <td>{$data.add_time|date="Y-m-d H:i:s",###}</td>
+                            <td>{$data.expire|date="Y-m-d H:i:s",###}</td>
+                            <td>{$data.admin_add}</td>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

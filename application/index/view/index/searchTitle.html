@@ -1,0 +1,58 @@
+{/* 关键词搜索页面 */ }
+{include file="common/header-normal"/}
+    <article id="main">
+        <header oncontextmenu="return false;" onselectstart="return false">
+            {neq name="$count" value="0"}
+            <h2>搜索关键词：{$key}</h2>
+            <p>
+                共找到 {$count} 条有关历史热搜内容
+            </p>
+            {else/}
+            <h2>根据您所提供的关键词系统未能检索到相关数据</h2>
+            <p>
+                Failed to retrieve relevant data according to the keyword system you provided
+            </p>
+            {/neq}
+        </header>
+        <section class="wrapper style5">
+            {neq name="$count" value="0"}
+            <div class="inner">
+                <center>
+                    <h4>搜索到以下有关 {$key} 的内容</h4>
+                    <h5>搜索时间：{$time}</h5>
+                    <br>
+                </center>
+                <div class="table-wrapper">
+                    <table style="text-align:center">
+                        <thead>
+                        <tr>
+                            <th><strong><center>序号</center></strong></th>
+                            <th><strong><center>关键词</center></strong></th>
+                            <th><strong><center>首次出现时间</center></strong></th>
+                            <th><strong><center>最高排名</center></strong></th>
+                            <th><strong><center>最高搜索量</center></strong></th>
+                            <th><strong><center>更多</center></strong></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name="titleInfo" id="data" empty=""}
+                        <tr>
+                            <td>{$i}</td>
+                            <td><a href='{$data.title|createWeiboUrl}' target="_blank"> {$data.title}</a></td>
+                            <td>{$data.createTime|formatGroupAll}</td>
+                            <td>{eq name="$data.maxRank" value="0"}置顶{else/}{$data.maxRank}{/eq}</td>
+                            <td>{$data.maxStar}</td>
+                            <td><a href="{:url('index/index/info',['itemID' => $data['id'],'token' => createTk($data['id'])])}" target="_blank">详情</a></td></tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {else/}
+            <center><h2>暂无数据</h2></center>
+            {/neq}
+            <center>{$pages}</center>
+</div>
+</section>
+</article>
+{include file="common/footer"/}

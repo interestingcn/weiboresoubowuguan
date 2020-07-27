@@ -1,0 +1,46 @@
+{include file="common/header-index"/}
+    <!-- 主体 -->
+    <article id="main">
+        <!-- 封面 -->
+        <header oncontextmenu="return false;" onselectstart="return false">
+            <h2>{$Think.config.app_index_title}</h2>
+            <p>但愿那些不为人知的你，都有被好好珍藏。</p>
+        </header>
+        <!-- 内容主体 -->
+        <section class="wrapper style5">
+            <div class="inner">
+                {neq name="list" value="0"}
+                <center>
+                    <h4>微博热搜榜单</h4>
+                    <h5>{$time}</h5>
+                    <br>
+                </center>
+                <!-- 内容 -->
+                <div class="table-wrapper">
+
+                    <table style="text-align:center">
+                            <thead>
+                            <tr>
+                                <th><strong><center>排名</center></strong></th>
+                                <th><strong><center>关键词</center></strong></th>
+                                <th><strong><center>热度</center></strong></th>
+                                <th><strong><center>状态</center></strong></th>
+                                <th><strong><center>更多</center></strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="data" empty=""}
+                            <tr><td>{$data.rank|default=''}</td><td><a href='{$data.jump_url|default=''}' target="_blank"> {$data.title|default='获取失败'}</a></td><td>{$data.star|default=''}</td><td> {$data.state|default=''}</td><td><a href="{:url('index/index/info',['itemID' => $data['title_id'],'token' => createTk($data['title_id'])])}" target="_blank">详情</a></td></tr>
+                            {/volist}
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+            {else/}
+            <center><h2>当前应用服务器出现异常并已将错误推送到开发者，请耐心等待应用恢复。</h2></center>
+            {/neq}
+</div>
+</section>
+</article>
+
+{include file="common/footer"/}

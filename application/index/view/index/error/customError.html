@@ -1,0 +1,17 @@
+{include file="common/header-normal"/}
+
+<article id="main">
+    <header oncontextmenu="return false;" onselectstart="return false">
+        <h2>错误：{$msg}</h2>
+        <p>
+            发生时间：<?php echo formatGroupAll(convertToGroup()) ?>
+        </p>
+        <ul class="actions">
+            <li><a href="/" class="button special disabled" >回到首页</a></li>
+        </ul>
+    </header>
+
+    </div>
+    </section>
+</article>
+{include file="common/footer"/}

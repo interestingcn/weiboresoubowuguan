@@ -1,0 +1,50 @@
+<section class="forms">
+    <div class="container-fluid">
+        <!-- Page Header-->
+        <header></header>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h4>用户查找</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form class="form-horizontal" action="{:url('admin/user/info')}" method="get">
+                            <div class="line"></div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">ID类型</label>
+                                <div class="col-sm-10 mb-3">
+                                    <select name="idType" class="form-control">
+                                        <option value="userid" selected>UserID</option>
+                                        <option value="openid">OpenID</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 form-control-label">ID</label>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" autocomplete="off" required name="id" class="form-control">
+                                            <div class="input-group-append">
+                                                <button type="sumbit" class="btn btn-primary">Go!</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 offset-sm-2">
+                                    <button type="submit" class="btn btn-primary">查询</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

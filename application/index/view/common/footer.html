@@ -1,0 +1,45 @@
+<!-- Footer -->
+<footer id="footer">
+    <ul class="copyright">
+        <li>&copy; <a href="https://github.com/meloncn/weiboresoubowuguan">{$Think.config.app_name}</a></li>
+        <li>Copyright &copy; <?php echo (date("Y")); ?> {$Think.config.app_copyright}.All Rights Reserved.</li>
+    </ul>
+    <ul class="copyright">
+        <li>End</li>
+    </ul>
+</footer>
+</div>
+{neq name="$Think.Config.app_debug" value="1"}
+<script>if(location.toString().indexOf("{$Think.config.app_host}") <= -1){document.location.href="{$Think.config.app_host}";}</script>
+<div id="count" style="display: none;">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?494eac4111344c6a4bd0096db1417ac4";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        $(function () {
+            var cnzz = document.createElement("script");
+            cnzz.src = "//s9.cnzz.com/z_stat.php?id=1278604753&web_id=1278604753";
+            document.getElementsByClassName('footer-copyright')[0].appendChild(cnzz);
+        });
+    </script>
+</div>
+{/neq}
+<!-- Scripts -->
+<script src="__ASSEST__/js/jquery.min.js"></script>
+<script src="__ASSEST__/js/jquery.scrollex.min.js"></script>
+<script src="__ASSEST__/js/jquery.scrolly.min.js"></script>
+<script src="__ASSEST__/js/skel.min.js"></script>
+<script src="__ASSEST__/js/util.js"></script>
+<!--[if lte IE 8]>
+<script src="__ASSEST__/js/ie/respond.min.js"></script>
+<![endif]-->
+<script src="__ASSEST__/js/main.js"></script>
+</body>
+</html>
+<!--微博热搜博物馆 END-->

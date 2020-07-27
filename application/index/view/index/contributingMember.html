@@ -1,0 +1,42 @@
+{/* 捐助者名单 */ }
+{include file="common/header-normal"/}
+<article id="main">
+    <!-- 封面 -->
+    <header oncontextmenu="return false;" onselectstart="return false">
+        <h2>贡 献 名 单 - 微 博 热 搜 博 物 馆</h2>
+        <p>
+            “每一件事每一个人 都有它不可替代的意义。”
+        </p>
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            <header>
+                <h2>贡献者名单</h2>
+                <p>Contributor list</p>
+            </header>
+            <div class="table-wrapper">
+                <table class="alt">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price（￥）</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="info" id="data" empty=""}
+                    <tr>
+                        <td>{$data.name}</td>
+                        <td>{$data.price}</td>
+                    {/volist}
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                    </tbody>
+                </table>
+                {$pages}
+            </div>
+        </div>
+    </section>
+</article>
+{include file="common/footer"/}

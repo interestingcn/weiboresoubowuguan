@@ -1,0 +1,108 @@
+{/* 高级搜索页面 */ }
+{include file="common/header-normal"/}
+<article id="main">
+    <!-- 封面 -->
+    <header oncontextmenu="return false;" onselectstart="return false">
+        <h2>高 级 搜 索 - 微 博 热 搜 博 物 馆</h2>
+        <p>
+            “你没有如期归来，而这正是离别的意义。——北岛《白日梦》”
+        </p>
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            <header>
+                <h4>关键词检索</h4>
+            </header>
+            <form method="get" action="/search">
+            <div >
+                <input type="search" name="key" value="" required placeholder="在此输入关键词" />
+                <br>
+                <input type="submit" value="开始检索" class="special fit" />
+            </div>
+            </form>
+            <hr />
+            <!--mobiscroll 时间选择控件-->
+            <script src="__ASSEST__/js/jquery.min.js"></script>
+            <script src="__ASSEST__/js/mobiscroll.custom.min.js"></script>
+            <link rel="stylesheet" href="__ASSEST__/css/mobiscroll.custom.min.css"/>
+            <style>
+                .section {
+                    position: relative;
+                    height: 32px;
+                    padding-left: 80px;
+                    padding-right: 15px;
+                    margin-bottom: 10px;
+                    box-sizing: border-box;
+                }
+                .section label {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    height: 32px;
+                    line-height: 32px;
+                ;
+                    font-size: 12px;
+                }
+                .section>select,  .section>input {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    padding: 0 10px;
+                    box-sizing: border-box;
+                }
+            </style>
+
+            <header>
+                <h4>时间检索</h4>
+            </header>
+            <form method="get" action="{:url('index/index/index')}">
+                <input type="search" id="input_datetime" name="time" value="" required placeholder="在此处输入时间" />
+                <input name="status" type="hidden" value="history">
+                <br>
+                <input type="submit" value="进入历史时间" class="special fit" />
+            </form>
+
+            <hr />
+            <header>
+            <h4>每日热搜</h4>
+                <p>输入指定日期进行查询，详情见 <a href="{:url('index/index/help')}" target="_blank">使用指南</a> 页面</p>
+            </header>
+            <form method="get" action="{:url('index/index/aggregateSearchResults')}">
+                <div>
+                    <input type="search" id="input_aggregateSearchResults" name="time" value="" required placeholder="在此处输入日期" />
+                    <br>
+                    <input type="checkbox" id="first-appearance" name="firstAppearance" checked>
+                    <label for="first-appearance">仅首次出现</label>
+                    <input type="submit" value="进行汇聚检索" class="special fit" />
+                </div>
+            </form>
+        </div>
+    </section>
+</article>
+
+<script>
+    var theme = "ios";
+    var mode = "scroller";
+    var display = "bubble";
+    var lang="zh";
+    $('#input_datetime').mobiscroll().datetime({
+        theme: theme,
+        mode: mode,
+        display: display,
+        lang: lang,
+        dateFormat:"yyyy-mm-dd",
+        minDate: new Date(2020,1,16,16,00),
+        maxDate: new Date(<?php echo (date("Y,n-1,d,H,i")); ?>),//疑似控件bug优化不够，第一个月为0月，此处先-1调用
+    }),
+    $('#input_aggregateSearchResults').mobiscroll().date({
+        theme: theme,
+        mode: mode,
+        display: display,
+        lang: lang,
+        dateFormat:"yyyy-mm-dd",
+        minDate: new Date(2020,1,16),
+        maxDate: new Date(<?php echo (date("Y,n-1,d")); ?>),//同上
+    });
+</script>
+{include file="common/footer"/}

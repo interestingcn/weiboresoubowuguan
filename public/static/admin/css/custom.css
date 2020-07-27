@@ -1,0 +1,7 @@
+/*remove other logo*/
+.grecaptcha-badge {
+    visibility: hidden;
+}
+#sharewaf_box {
+    visibility: hidden;
+}

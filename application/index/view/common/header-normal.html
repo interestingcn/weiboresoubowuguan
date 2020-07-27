@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{$title|default='未定义标题'} - {$Think.config.app_name}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="__ASSEST__/js/ie/html5shiv.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="__ASSEST__/css/main.css"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="__ASSEST__/css/ie8.css"/>
+    <![endif]--><!--[if lte IE 9]>
+    <link rel="stylesheet" href="__ASSEST__/css/ie9.css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="__ASSEST__/css/bootstrap-pagination.css"/>
+</head>
+<body>
+<div class="loader">
+</div>
+<div id="page-wrapper">
+    <header id="header">
+        <h1><a href="/">{$Think.config.app_name}</a></h1>
+        <!-- 顶栏搜索框 -->
+        {neq name="$Think.session.userid" value=""}
+        <div style="width:40%;margin-left:70%;margin-top:0.7em;position:absolute" class="search-top">
+            <form method="get" action="{:url('index/index/searchItem')}">
+                <input type="search" autocomplete="off" style="width:50%;float:left;position:relative;height:auto" name="key" value="{$key|default=''}" required placeholder="输入关键词开始搜索"/>
+            </form>
+        </div>
+        {/neq}
+        <!-- 侧边栏 -->
+        {include file="common/nav"/}
+    </header>

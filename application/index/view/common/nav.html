@@ -1,0 +1,46 @@
+<nav id="nav">
+    <ul>
+        {eq name="$Think.session.userid" value=""}
+        <a href="{:url('index/user/login')}" class="menuToggle"><span>快速登陆</span></a>
+        {/eq}
+        <li class="special">
+            <a href="#menu" class="menuToggle"><span>Menu</span></a>
+            <div id="menu">
+                <ul>
+                    {eq name="$Think.session.userid" value=""}
+                    <li><a href="{:url('index/user/login')}">登陆</a></li>
+                    {else/}
+                    <li><a href="{:url('index/index/index')}">首页</a></li>
+                    <li><a href="{:url('index/user/index')}">个人中心</a></li>
+                    <li><a href="{:url('index/index/advancedSearch')}">高级搜索</a></li>
+                    {/eq}
+                    <li><a href="{:url('index/index/subsidize')}">资助本站</a></li>
+                    <li><a href="{:url('index/index/contributingMember')}">贡献者名单</a></li>
+                    <li><a href="{:url('index/index/about')}">关于</a></li>
+                    <li><a href="{:url('index/index/help')}">使用指南</a></li>
+                    {neq name="$Think.session.userid" value=""}
+                    <li>
+                        热搜关键词检索
+                        <br>
+                        <br>
+                        <!-- 侧栏搜索框 -->
+                        <form method="get" action="{:url('index/index/searchItem')}">
+                            <input type="search" autocomplete="off" name="key" required placeholder="输入关键词开始搜索"/>
+                            <button type="submit" class="button special" style="width:100%">开始搜索</button>
+                        </form>
+                    </li>
+                    <li>
+                        当前登陆信息：<br>
+                        <a href="{:url('index/user/index')}">登录名称：{$Think.session.name}</a>
+                        <a href="{:url('index/user/logout')}" class="button small">注销当前登陆</a>
+                    </li>
+                    <br>
+                    <li>移动设备接力浏览 <br>
+                        <img width="45%" src="http://qr.topscan.com/api.php?el=m&m=10&text={$Request.url.true}" />
+                    </li>
+                    {/neq}
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>

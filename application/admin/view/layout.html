@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统 - {$Think.config.app_name}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="__STATIC__/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__STATIC__/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__STATIC__/css/fontastic.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="__STATIC__/css/grasp_mobile_progress_circle-1.0.0.min.css">
+    <link rel="stylesheet" href="__STATIC__/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="__STATIC__/css/style.system.css">
+    <link rel="stylesheet" href="__STATIC__/css/custom.css">
+    <link rel="stylesheet" href="__STATIC__/css/bootstrap-pagination.css">
+    <link rel="shortcut icon" href="__STATIC__/img/favicon.ico">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- Side Navbar -->
+<nav class="side-navbar">
+    <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+            <!-- User Info-->
+            <div class="sidenav-header-inner text-center">
+                <h2 class="h5">{$Think.config.app_name}</h2>
+            </div>
+            <!-- Small Brand information, appears on minimized sidebar-->
+            <div class="sidenav-header-logo"><a class="brand-small text-center"> Menu</div>
+        </div>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+            <h5 class="sidenav-heading">主要</h5>
+            <ul id="side-main-menu" class="side-menu list-unstyled">
+                <li><a href="{:url('admin/index/index')}" target="_self"> <i class="icon-home"></i>概览</a></li>
+                <li><a href="{:url('admin/RequestAudit/index')}"> <i class="icon-form"></i>请求审计</a></li>
+                <li><a href="{:url('admin/CheckMax/index')}"> <i class="fa fa-bar-chart"></i>数据核验</a></li>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>用户管理</a>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li><a href="{:url('admin/User/index')}">用户列表</a></li>
+                        <li><a href="{:url('admin/User/searchUser')}">查找</a></li>
+                        <li><a href="{:url('admin/User/resetUsedAll')}" onclick="if(confirm('您即将重置全部用户使用量数据！')==false)return false;" >重置全部使用量</a></li>
+                    </ul>
+                </li>
+                <li><a href="#exampledropdownDropdown1" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>IP防火墙</a>
+                    <ul id="exampledropdownDropdown1" class="collapse list-unstyled ">
+                        <li><a href="{:url('admin/Ban/index')}" target="_blank">查看当前阻断列表</a></li>
+                        <li><a href="{:url('admin/Ban/add')}" target="_blank">添加IP到黑名单</a></li>
+                        <li><a href="{:url('admin/Ban/listBan')}">查看阻断记录</a></li>
+                    </ul>
+                </li>
+                <li><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>清理</a>
+                    <ul id="exampledropdownDropdown2" class="collapse list-unstyled ">
+                        <li><a href="{:url('admin/Clean/cleanRequest')}" target="_self">清除历史审计记录</a></li>
+                        <li><a href="{:url('admin/Clean/cleanExpireBan')}" onclick="if(confirm('您即将执行删除已过期黑名单操作')==false)return false; target="_self">删除已过期IP黑名单</a></li>
+                        <li><a href="{:url('admin/Clean/cleanFarmeworkCache')}" onclick="if(confirm('您即将执行删除框架缓存操作')==false)return false;" target="_self">删除框架缓存</a></li>
+                    </ul>
+                </li>
+                <li><a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>赞助者名单</a>
+                    <ul id="exampledropdownDropdown3" class="collapse list-unstyled ">
+                        <li><a href="{:url('admin/Contributing/index')}" target="_self">赞助清单</a></li>
+                        <li><a href="{:url('admin/Contributing/add')}" target="_self">添加信息</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="admin-menu">
+            <h5 class="sidenav-heading">其他</h5>
+            <ul id="side-admin-menu" class="side-menu list-unstyled">
+                <li> <a href="https://tongji.baidu.com/web/10000216103/overview/index?siteId=15156130" target="_blank"> <i class="icon-screen"> </i>百度统计</a></li>
+                <li> <a href="https://web.umeng.com/main.php?c=site&a=show" target="_blank"> <i class="icon-mail"></i>CNZZ</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="page">
+    <!-- navbar-->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="#" class="navbar-brand">
+                        <div class="brand-text d-none d-md-inline-block"><span>微博热搜博物馆后台管理系统</span></div></a></div>
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                        <!-- Log out-->
+                        <li class="nav-item"><a href="{:url('admin/Authentication/logout')}" class="nav-link logout"> <span class="d-none d-sm-inline-block">退出登录</span><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    {__CONTENT__}
+
+</div>
+<!-- JavaScript files-->
+<script src="__STATIC__/vendor/jquery/jquery.min.js"></script>
+<script src="__STATIC__/vendor/popper.js/umd/popper.min.js"> </script>
+<script src="__STATIC__/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="__STATIC__/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
+<script src="__STATIC__/vendor/jquery-validation/jquery.validate.min.js"></script>
+<script src="__STATIC__/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="__STATIC__/js/front.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+{/* 详情页面 */ }
+{include file="common/header-normal"/}
+<script src="https://code.highcharts.com.cn/jquery/jquery-1.8.3.min.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+<script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
+<article id="main">
+    <header oncontextmenu="return false;" onselectstart="return false">
+        <h2><a href="{$title|createWeiboUrl}">关键词: {$title}</a></h2>
+        <p>首次出现时间：{$createTime}
+            <br>
+            共计在榜时长 {$count_time}
+            <br>
+            {eq name="$maxRank" value="0"}
+            最高榜单排名：置顶
+            {else/}
+            最高榜单排名：第 {$maxRank} 名
+            <br>
+            最高搜索量：{$maxStar}
+            {/eq}
+        </p>
+    </header>
+    <section class="wrapper style5">
+        <div class="inner">
+            <div id="search-container" style="min-width:400px;height:300px"></div>
+            <hr />
+            <div id="hot-container" style="min-width:100px;height:400px"></div>
+            <!--搜索排名-->
+            <script>
+                var chart = Highcharts.chart("search-container", {
+                    credits: {
+                        text: '微博热搜博物馆',
+                        href: '{$Think.config.app_host}',
+                    },
+                    title: {
+                        text: "#{$title}# - 搜索排名情况"
+                    },
+                    subtitle: {
+                        text: "生成时间：<?php echo formatGroupAll(convertToGroup()); ?>"
+                    },
+                    chart: {
+                        type: "line",
+                        zoomType: "x"
+                    },
+                    xAxis: {
+                        tickInterval: 60,
+                        categories: [{volist name="timeInfo" id="data"}"{$data.time|formatGroupAll}", {/volist}]
+                    },
+                    yAxis: {
+                        title: {
+                            text: "名次"
+                        },
+                        reversed:true,
+                        allowDecimals:false,
+                    },
+                    tooltip: {
+                        crosshairs: !0,
+                        shared: !0
+                    },
+                    plotOptions: {
+                        spline: {
+                            marker: {
+                                radius: 4,
+                                lineColor: "#666666",
+                                lineWidth: 1
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                            name: "排名",
+                            data: [{volist name="timeInfo" id="data"}{eq name="$data.rank" value='置顶'}0, {else/}{$data.rank},{/eq}{/volist}]
+                    }]
+                    })
+            </script>
+            <!--关注热度-->
+            <script>
+                var chart =	 Highcharts.chart("hot-container", {
+                    credits: {
+                        text: '微博热搜博物馆',
+                        href: '{$Think.config.app_host}'
+                    },
+                    chart: {
+                        zoomType: "x"
+                    },
+                    title: {
+                        text: "#{$title}# - 热点搜索量走势图"
+                    },
+                    subtitle: {
+                        text: "生成时间：<?php echo formatGroupAll(convertToGroup()); ?>"
+                    },
+                    xAxis: {
+                        type: "categories",
+                        tickInterval: 60,
+                        categories: [{volist name="timeInfo" id="data"}"{$data.time|formatGroupAll}", {/volist}
+                        ],
+                    },
+                    tooltip: {
+                        dateTimeLabelFormats: {
+
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: "热度值"
+                        }
+                    },
+                    legend: {
+                        enabled: !1
+                    },
+                    plotOptions: {
+                        area: {
+                            fillColor: {
+                                linearGradient: {
+                                    x1: 0,
+                                    y1: 0,
+                                    x2: 0,
+                                    y2: 1
+                                },
+                                stops: [[0, Highcharts.getOptions().colors[0]], [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get("rgba")]]
+                            },
+
+                            marker: {
+                                radius: 2
+                            },
+                            lineWidth: 1,
+                            states: {
+                                hover: {
+                                    lineWidth: 1
+                                }
+                            },
+                            threshold: null
+                        }
+                    },
+                    series: [{
+                        type: "area",
+                        name: "热度",
+                        data: [{volist name="timeInfo" id="data"}{$data.star}, {/volist}],},]
+                })
+            </script>
+        </div>
+    </section>
+</article>
+{include file="common/footer"/}
